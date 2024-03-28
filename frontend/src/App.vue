@@ -1,6 +1,7 @@
 <template>Burn on read service upcoming</template>
 
-<script setup>
+<script setup lang="ts">
+import BlinkGone from '@/views/BlinkGone.vue'
 // @TODO: to be deleted... only for testing-purposes! --> start
 async function getData() {
   const response = await fetch('http://localhost:3000/data')
@@ -12,3 +13,7 @@ getData()
 
 // <-- end
 </script>
+
+<template>
+  <BlinkGone />
+</template>
