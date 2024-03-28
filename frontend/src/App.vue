@@ -1,3 +1,1 @@
-<script setup lang="ts"></script>
-
-<template>Burn on read service</template>
+<template>Burn on read service upcoming</template>
