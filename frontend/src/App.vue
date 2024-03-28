@@ -1,5 +1,3 @@
-<template>Burn on read service upcoming</template>
-
 <script setup lang="ts">
 import BlinkGone from '@/views/BlinkGone.vue'
 // @TODO: to be deleted... only for testing-purposes! --> start
