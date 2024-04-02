@@ -17,4 +17,17 @@ describe('burn-on-read-service', () => {
       expect(response.status).to.eq(200)
     })
   })
+  it('show message', () => {
+    cy.visit(URL + 'messages/1')
+    cy.get('button').click()
+    cy.get('p').should('have.text', 'das ist ein Test')
+  })
+  it('display error message', () => {
+    cy.visit(URL + 'messages/2')
+    cy.get('button').click()
+    cy.get('p').should(
+      'have.text',
+      ' Es ist ein Fehler aufgetreten. Entweder existiert die von Ihnen angeforderte Nachricht nicht oder sie wurde bereits gelesen und somit gelöscht. '
+    )
+  })
 })
