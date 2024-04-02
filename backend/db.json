@@ -1,3 +1,24 @@
 {
-  "data": [{ "id": 1, "message": "das ist ein Test" }]
+  "data": [
+    {
+      "id": "1",
+      "message": "das ist ein Test"
+    },
+    {
+      "id": "cdc0",
+      "message": "HAHA"
+    },
+    {
+      "id": "5810",
+      "message": "Das ist ein automatisierter Test"
+    },
+    {
+      "id": "2238",
+      "message": "Das ist ein automatisierter Test"
+    },
+    {
+      "id": "4ab9",
+      "message": "Das ist ein automatisierter Test"
+    }
+  ]
 }
