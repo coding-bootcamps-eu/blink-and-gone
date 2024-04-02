@@ -32,13 +32,14 @@ function handleSubmit() {
       if (!response.ok) {
         throw new Error('Network response was not ok')
       }
-      return response.json() as Promise<ApiResponse>
+      return response.json()
     })
     .then((data) => {
       console.log(data.message)
+      secretMessage.value = ''
     })
     .catch((error) => {
-      console.error('Error submitting data:', error)
+      console.error('Error, submitting is not working:', error)
     })
 }
 </script>
