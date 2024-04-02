@@ -8,6 +8,13 @@
       ></textarea>
       <button type="submit">Blink</button>
     </form>
+    <div v-if="errorOccurred === true">
+      <h2>Fehler!</h2>
+      <p>
+        Bei der gewünschten Funktion ist leider ein Fehler aufgetreten. Bitte versuchen Sie es in
+        ein paar Minuten noch einmal.
+      </p>
+    </div>
   </main>
 </template>
 
@@ -19,6 +26,7 @@ interface ApiResponse {
 }
 
 const secretMessage = ref<string>('')
+let errorOccurred = ref<boolean>(false)
 
 function handleSubmit() {
   fetch('http://localhost:3000/data', {
@@ -37,8 +45,10 @@ function handleSubmit() {
     .then((data) => {
       console.log(data.message)
       secretMessage.value = ''
+      errorOccurred.value = false
     })
     .catch((error) => {
+      errorOccurred.value = true
       console.error('Error, submitting is not working:', error)
     })
 }
