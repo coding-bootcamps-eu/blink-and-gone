@@ -13,5 +13,5 @@ getData()
 </script>
 
 <template>
-  <BlinkGone />
+  <RouterView />
 </template>

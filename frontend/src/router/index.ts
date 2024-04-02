@@ -8,6 +8,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: BlinkGone
+    },
+    {
+      path: '/messages/:id',
+      name: 'messages',
+      component: () => import('../views/ShowMessage.vue')
     }
   ]
 })
