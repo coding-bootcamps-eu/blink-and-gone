@@ -1,6 +1,6 @@
 <template>
   <main>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit" method="post">
       <textarea
         v-model="secretMessage"
         id="secmess"
@@ -15,6 +15,10 @@
         ein paar Minuten noch einmal.
       </p>
     </div>
+    <div v-if="showLink === true">
+      <h2>Your secret link</h2>
+      <a target="_blank" :href="secretLink">{{ secretLink }}</a>
+    </div>
   </main>
 </template>
 
@@ -27,9 +31,11 @@ interface ApiResponse {
 
 const secretMessage = ref<string>('')
 let errorOccurred = ref<boolean>(false)
+let showLink = ref<boolean>(false)
+let secretLink = ref<string>('http://localhost:5173/messages/')
 
 function handleSubmit() {
-  fetch('http://localhost:3000/data', {
+  fetch('http://localhost:3000/messages/new', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -43,9 +49,11 @@ function handleSubmit() {
       return response.json()
     })
     .then((data) => {
-      console.log(data.message)
+      console.log(data)
+      secretLink.value += `${data.filename}${data.seperator}${data.timestamp}`
       secretMessage.value = ''
       errorOccurred.value = false
+      showLink.value = true
     })
     .catch((error) => {
       errorOccurred.value = true

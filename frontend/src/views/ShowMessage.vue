@@ -15,13 +15,13 @@ import MessageItem from '../components/MessageItem.vue'
 
 const route = useRoute()
 const id = route.params.id
-let secmess = ''
+let secmess = ref<string>('')
 let clicked = ref<boolean>(false)
 let errorOccurred = ref<boolean>(false)
 
 async function getMessage() {
   try {
-    const response = await fetch('http://localhost:3000/data/' + id)
+    const response = await fetch('http://localhost:3000/messages/' + id)
     const result = await response.json()
     secmess = result.message
     clicked.value = true
