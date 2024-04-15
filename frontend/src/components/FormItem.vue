@@ -6,29 +6,27 @@
         id="secmess"
         placeholder="Enter your secret message here..."
       ></textarea>
-      <button type="submit">Blink</button>
+      <button type="submit" :disabled="showLink === true">
+        <span v-if="showLink === false" class="btn-text">Blink</span
+        ><span v-else>...and gone!</span>
+      </button>
     </form>
-    <div v-if="errorOccurred === true">
-      <h2>Fehler!</h2>
-      <p>
-        Bei der gewünschten Funktion ist leider ein Fehler aufgetreten. Bitte versuchen Sie es in
-        ein paar Minuten noch einmal.
-      </p>
-    </div>
-    <div v-if="showLink === true">
-      <h2>Your secret link</h2>
-      <a target="_blank" :href="secretLink">{{ secretLink }}</a>
-    </div>
+    <ErrorMessageItem v-if="errorOccurred === true" :text="errorText" />
+    <SecretLinkItem v-if="showLink === true" :secret-link="secretLink" />
   </main>
 </template>
 
 <script setup lang="ts">
+import ErrorMessageItem from '../components/ErrorMessageItem.vue'
+import SecretLinkItem from '../components/SecretLinkItem.vue'
 import { ref } from 'vue'
 
 interface ApiResponse {
   message: string
 }
 
+const errorText: string =
+  'Unfortunately, an error occurred with the desired function. Please try again in a few minutes.'
 const secretMessage = ref<string>('')
 let errorOccurred = ref<boolean>(false)
 let showLink = ref<boolean>(false)
@@ -64,6 +62,14 @@ function handleSubmit() {
 
 <style scoped>
 #secmess {
-  width: 300px;
+  width: 100%;
+  resize: none;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>

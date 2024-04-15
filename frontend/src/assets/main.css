@@ -1,35 +1,31 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+button {
+  padding: 10px;
+  cursor: pointer;
+  border: 2px solid var(--color-border);
+  border-radius: 5px;
+  background-color: var(--color-btn);
+  color: var(--vt-c-indigo);
+  font-weight: bold;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+button:hover:enabled {
+  border: 2px solid var(--color-border-hover);
+  background-color: var(--color-background-soft);
+  color: var(--vt-c-white);
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+button:disabled {
+  cursor: not-allowed;
+  background-color: var(--color-background-mute);
+  color: var(--color-text);
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.btn-text {
+  font-weight: bold;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+a {
+  color: currentColor;
 }
