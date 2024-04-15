@@ -6,6 +6,8 @@
 </template>
 
 <script setup lang="ts">
+import '../assets/base.css'
+
 defineProps({
   headline: String,
   text: String
@@ -14,13 +16,14 @@ defineProps({
 
 <style scoped>
 .container {
-  padding: 5px;
-  border: 2px solid white;
+  padding: 15px;
+  border: 2px solid var(--color-border);
+  border-radius: 5px;
 }
 .headline {
   text-align: center;
 }
 .text {
-  text-align: justify;
+  text-align: center;
 }
 </style>

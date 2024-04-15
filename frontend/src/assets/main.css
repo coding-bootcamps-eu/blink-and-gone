@@ -29,3 +29,12 @@ button:disabled {
 a {
   color: currentColor;
 }
+
+@media (prefers-color-scheme: light) {
+  .btn-text {
+    color: var(--vt-c-white);
+  }
+  button:hover .btn-text {
+    color: var(--vt-c-indigo);
+  }
+}
