@@ -30,10 +30,10 @@ const errorText: string =
 const secretMessage = ref<string>('')
 let errorOccurred = ref<boolean>(false)
 let showLink = ref<boolean>(false)
-let secretLink = ref<string>('http://localhost:5173/messages/')
+let secretLink = ref<string>('https://blink-and-gone.onrender.com/messages/')
 
 function handleSubmit() {
-  fetch('http://localhost:3000/messages/new', {
+  fetch('https://blink-and-gone.onrender.com/messages/new', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
