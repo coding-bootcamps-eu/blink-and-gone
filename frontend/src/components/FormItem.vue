@@ -20,6 +20,7 @@
 import ErrorMessageItem from '../components/ErrorMessageItem.vue'
 import SecretLinkItem from '../components/SecretLinkItem.vue'
 import { ref } from 'vue'
+const { VITE_API, VITE_APP_BASE_URL } = import.meta.env
 
 interface ApiResponse {
   message: string
@@ -30,10 +31,10 @@ const errorText: string =
 const secretMessage = ref<string>('')
 let errorOccurred = ref<boolean>(false)
 let showLink = ref<boolean>(false)
-let secretLink = ref<string>('https://blink-and-gone.netlify.app/messages/')
+let secretLink = ref<string>(`${VITE_APP_BASE_URL}/messages/`)
 
 function handleSubmit() {
-  fetch('https://blink-and-gone.onrender.com/messages/new', {
+  fetch(`${VITE_API}/messages/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
