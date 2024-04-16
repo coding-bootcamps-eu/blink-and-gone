@@ -15,6 +15,7 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import MessageItem from '../components/MessageItem.vue'
 import ErrorMessageItem from '@/components/ErrorMessageItem.vue'
+const { VITE_API } = import.meta.env
 
 const route = useRoute()
 const id = route.params.id
@@ -26,7 +27,7 @@ let errorOccurred = ref<boolean>(false)
 
 async function getMessage() {
   try {
-    const response = await fetch('http://localhost:3000/messages/' + id)
+    const response = await fetch(VITE_API + '/messages/' + id)
     const result = await response.json()
     secmess = result.message
     clicked.value = true
