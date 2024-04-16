@@ -30,7 +30,7 @@ const errorText: string =
 const secretMessage = ref<string>('')
 let errorOccurred = ref<boolean>(false)
 let showLink = ref<boolean>(false)
-let secretLink = ref<string>('https://blink-and-gone.onrender.com/messages/')
+let secretLink = ref<string>('https://blink-and-gone.netlify.app/messages/')
 
 function handleSubmit() {
   fetch('https://blink-and-gone.onrender.com/messages/new', {
