@@ -1,12 +1,12 @@
-<script setup lang="ts">
-import FormItem from '../components/FormItem.vue'
-</script>
-
 <template>
   <h1 class="title"><span class="blink">Blink</span> and <span class="gone">Gone</span></h1>
   <hr />
   <FormItem class="form" />
 </template>
+
+<script setup lang="ts">
+import FormItem from '../components/FormItem.vue'
+</script>
 
 <style scoped>
 .title {

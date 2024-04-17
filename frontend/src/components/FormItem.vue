@@ -22,10 +22,6 @@ import SecretLinkItem from '../components/SecretLinkItem.vue'
 import { ref } from 'vue'
 const { VITE_API, VITE_APP_BASE_URL } = import.meta.env
 
-interface ApiResponse {
-  message: string
-}
-
 const errorText: string =
   'Unfortunately, an error occurred with the desired function. Please try again in a few minutes.'
 const secretMessage = ref<string>('')
@@ -48,7 +44,6 @@ function handleSubmit() {
       return response.json()
     })
     .then((data) => {
-      console.log(data)
       secretLink.value += `${data.filename}${data.seperator}${data.timestamp}`
       secretMessage.value = ''
       errorOccurred.value = false
