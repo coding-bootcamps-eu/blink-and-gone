@@ -1,1 +1,0 @@
-{"message":"Die Antwort auf die Frage des Lebens: 42!"}
