@@ -1,4 +1,4 @@
-describe('burn-on-read-service', () => {
+describe('burn-on-read-service tests', () => {
   const URL = 'http://localhost:5173/'
   it('get title', () => {
     cy.visit(URL)
