@@ -27,7 +27,7 @@ const errorText: string =
 const secretMessage = ref<string>('')
 let errorOccurred = ref<boolean>(false)
 let showLink = ref<boolean>(false)
-let secretLink = ref<string>(`${VITE_APP_BASE_URL}/messages/`)
+let secretLink = ref<string>(`${VITE_APP_BASE_URL}/receive/`)
 
 function handleSubmit() {
   fetch(`${VITE_API}/messages/new`, {

@@ -10,7 +10,7 @@ const router = createRouter({
       component: BlinkGone
     },
     {
-      path: '/messages/:id',
+      path: '/receive/:id',
       name: 'messages',
       component: () => import('../views/ShowMessage.vue')
     }
