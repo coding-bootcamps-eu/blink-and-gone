@@ -6,6 +6,9 @@
         id="secmess"
         placeholder="Enter your secret message here..."
       ></textarea>
+      <p v-if="emptyMessage" class="validation">
+        Error: Your message must contain at least one character!
+      </p>
       <button type="submit" :disabled="showLink === true">
         <span v-if="showLink === false" class="btn-text">Blink</span
         ><span v-else>...and gone!</span>
@@ -20,6 +23,7 @@
 import ErrorMessageItem from '../components/ErrorMessageItem.vue'
 import SecretLinkItem from '../components/SecretLinkItem.vue'
 import { ref } from 'vue'
+import '@/assets/base.css'
 const { VITE_API, VITE_APP_BASE_URL } = import.meta.env
 
 const errorText: string =
@@ -28,31 +32,36 @@ const secretMessage = ref<string>('')
 let errorOccurred = ref<boolean>(false)
 let showLink = ref<boolean>(false)
 let secretLink = ref<string>(`${VITE_APP_BASE_URL}/receive/`)
+let emptyMessage = ref<boolean>(false)
 
 function handleSubmit() {
-  fetch(`${VITE_API}/messages/new`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ message: secretMessage.value })
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
-      }
-      return response.json()
+  if (secretMessage.value.length === 0) {
+    return (emptyMessage.value = true)
+  } else {
+    fetch(`${VITE_API}/messages/new`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: secretMessage.value })
     })
-    .then((data) => {
-      secretLink.value += `${data.filename}${data.seperator}${data.timestamp}`
-      secretMessage.value = ''
-      errorOccurred.value = false
-      showLink.value = true
-    })
-    .catch((error) => {
-      errorOccurred.value = true
-      console.error('Error, submitting is not working:', error)
-    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
+      .then((data) => {
+        secretLink.value += `${data.filename}${data.seperator}${data.timestamp}`
+        secretMessage.value = ''
+        errorOccurred.value = false
+        showLink.value = true
+      })
+      .catch((error) => {
+        errorOccurred.value = true
+        console.error('Error, submitting is not working:', error)
+      })
+  }
 }
 </script>
 
@@ -67,5 +76,11 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.validation {
+  text-align: center;
+  border: 2px solid var(--vt-c-warn);
+  border-radius: 5px;
+  margin: 5px 0;
 }
 </style>
