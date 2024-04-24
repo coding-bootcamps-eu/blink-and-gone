@@ -5,20 +5,25 @@
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc && node dist/server.js",
+    "start": "npx tsc && nodemon dist/server.js",
     "start:dev": "nodemon server.ts",
     "build": "tsc"
+  },
+  "bin": {
+    "blink-and-gone": "bin/blinkandgone.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "connect-history-api-fallback": "^2.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/connect-history-api-fallback": "^1.5.4",
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
