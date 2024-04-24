@@ -1,6 +1,6 @@
 {
   "name": "blink-and-gone",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "simple burn-on-read service for delivering und receiving secret messages",
   "main": "server.ts",
   "scripts": {
