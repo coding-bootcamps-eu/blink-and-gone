@@ -4,17 +4,19 @@ import messageRouter from "./routes/messages";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import history from "connect-history-api-fallback";
+import path from "path";
 
 const app: Express = express();
 dotenv.config();
-
-const path = "../backend/dist/views/dist";
+const pathDestination =
+  process.env.NODE_ENV === "production" ? "views/dist" : "dist/views/dist";
+const dirPath = path.join(__dirname, pathDestination);
 const port: string | 3000 = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use("/messages", messageRouter);
-app.use(express.static(path));
+app.use(express.static(dirPath));
 app.listen(port);
 app.use(
   history({
@@ -22,7 +24,9 @@ app.use(
     verbose: true,
   })
 );
-app.use(express.static(path));
-app.get("/", function (req: Request, res: Response) {
-  res.sendFile(path + "index.html");
-});
+app.use(express.static(dirPath));
+// app.get("/", function (req: Request, res: Response) {
+//   res.sendFile(path + "index.html");
+// });
+
+console.log(process.env.NODE_ENV);

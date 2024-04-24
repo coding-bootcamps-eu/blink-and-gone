@@ -1,19 +1,23 @@
 {
-  "name": "backend",
+  "name": "blink-and-gone",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple burn-on-read service for delivering und receiving secret messages",
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc && nodemon dist/server.js",
+    "start": "npx tsc && NODE_ENV=production node dist/server.js",
     "start:dev": "nodemon server.ts",
     "build": "tsc"
   },
   "bin": {
     "blink-and-gone": "bin/blinkandgone.js"
   },
-  "author": "",
+  "author": "Mih Yeong Bak, Hendrik Schwind-Hansen, Joe Ray Gregory",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coding-bootcamps-eu/blink-and-gone"
+  },
   "dependencies": {
     "body-parser": "^1.20.2",
     "connect-history-api-fallback": "^2.0.0",
