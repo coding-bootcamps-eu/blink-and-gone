@@ -38,6 +38,7 @@ function handleSubmit() {
   if (secretMessage.value.length === 0) {
     return (emptyMessage.value = true)
   } else {
+    emptyMessage.value = false
     fetch(`${VITE_API}/messages/new`, {
       method: 'POST',
       headers: {
