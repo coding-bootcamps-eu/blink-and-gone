@@ -8,9 +8,9 @@ import path from "path";
 
 const app: Express = express();
 dotenv.config();
-const pathDestination =
-  process.env.NODE_ENV === "production" ? "views/dist" : "dist/views/dist";
-const dirPath = path.join(__dirname, pathDestination);
+// const pathDestination =
+//   process.env.NODE_ENV === "production" ? "views/dist" : "dist/views/dist";
+const dirPath = path.join(__dirname, "views/dist");
 const port: string | 3000 = process.env.PORT || 3000;
 
 app.use(cors());
@@ -28,5 +28,3 @@ app.use(express.static(dirPath));
 // app.get("/", function (req: Request, res: Response) {
 //   res.sendFile(path + "index.html");
 // });
-
-console.log(process.env.NODE_ENV);
